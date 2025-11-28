@@ -30,12 +30,12 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <SidebarFooter>
           <div className="flex items-center gap-3">
             <Avatar className="size-8">
-              {userAvatar && <AvatarImage src={userAvatar.imageUrl} alt="User Avatar" />}
-              <AvatarFallback>JD</AvatarFallback>
+              {userAvatar && <AvatarImage src={userAvatar.imageUrl} alt="User Avatar" data-ai-hint={userAvatar.imageHint}/>}
+              <AvatarFallback>U</AvatarFallback>
             </Avatar>
             <div className="flex flex-col">
-              <span className="text-sm font-medium">Jane Doe</span>
-              <span className="text-xs text-muted-foreground">Agency Admin</span>
+              <span className="text-sm font-medium">Clarity User</span>
+              <span className="text-xs text-muted-foreground">rc0l0o7tmd</span>
             </div>
           </div>
         </SidebarFooter>

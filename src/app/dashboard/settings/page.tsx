@@ -6,13 +6,13 @@ import { Settings } from 'lucide-react';
 import { PlatformIcon } from '@/components/platform-icon';
 import type { Platform } from '@/components/platform-icon';
 
-const dataSources: { name: string; platform: Platform }[] = [
-  { name: 'Google Analytics', platform: 'google' },
-  { name: 'Facebook Ads', platform: 'facebook' },
-  { name: 'LinkedIn Campaign Manager', platform: 'linkedin' },
-  { name: 'TikTok for Business', platform: 'tiktok' },
-  { name: 'Reddit Ads', platform: 'reddit' },
-  { name: 'Bing Webmaster', platform: 'bing' },
+const dataSources: { name: string; platform: Platform, connected?: boolean }[] = [
+    { name: 'Microsoft Clarity', platform: 'bing', connected: true },
+    { name: 'Google Analytics', platform: 'google' },
+    { name: 'Facebook Ads', platform: 'facebook' },
+    { name: 'LinkedIn Campaign Manager', platform: 'linkedin' },
+    { name: 'TikTok for Business', platform: 'tiktok' },
+    { name: 'Reddit Ads', platform: 'reddit' },
 ];
 
 export default function SettingsPage() {
@@ -42,7 +42,11 @@ export default function SettingsPage() {
                 <PlatformIcon platform={source.platform} className="size-6" />
                 <span className="font-medium">{source.name}</span>
               </div>
-              <Button variant="outline">Connect</Button>
+              {source.connected ? (
+                <Button variant="outline" disabled>Connected</Button>
+              ) : (
+                <Button variant="outline">Connect</Button>
+              )}
             </div>
           ))}
         </CardContent>
