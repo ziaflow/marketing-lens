@@ -9,6 +9,8 @@ import type { Platform } from '@/components/platform-icon';
 const dataSources: { name: string; platform: Platform, connected?: boolean, projectId?: string }[] = [
     { name: 'Microsoft Clarity', platform: 'bing', connected: true, projectId: process.env.CLARITY_PROJECT_ID },
     { name: 'Google Analytics', platform: 'google' },
+    { name: 'Google Business Profile', platform: 'google' },
+    { name: 'Google Search Console', platform: 'google' },
     { name: 'Facebook Ads', platform: 'facebook' },
     { name: 'LinkedIn Campaign Manager', platform: 'linkedin' },
     { name: 'TikTok for Business', platform: 'tiktok' },
