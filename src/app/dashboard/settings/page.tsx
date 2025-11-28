@@ -6,8 +6,8 @@ import { Settings } from 'lucide-react';
 import { PlatformIcon } from '@/components/platform-icon';
 import type { Platform } from '@/components/platform-icon';
 
-const dataSources: { name: string; platform: Platform, connected?: boolean }[] = [
-    { name: 'Microsoft Clarity', platform: 'bing', connected: true },
+const dataSources: { name: string; platform: Platform, connected?: boolean, projectId?: string }[] = [
+    { name: 'Microsoft Clarity', platform: 'bing', connected: true, projectId: process.env.CLARITY_PROJECT_ID },
     { name: 'Google Analytics', platform: 'google' },
     { name: 'Facebook Ads', platform: 'facebook' },
     { name: 'LinkedIn Campaign Manager', platform: 'linkedin' },
@@ -33,14 +33,19 @@ export default function SettingsPage() {
       <Card>
         <CardHeader>
           <CardTitle>Data Sources</CardTitle>
-          <CardDescription>Connect and manage your marketing data platforms. Represents API authentication via Azure Key Vault.</CardDescription>
+          <CardDescription>Connect and manage your marketing data platforms. Represents API authentication.</CardDescription>
         </CardHeader>
         <CardContent className="grid gap-6">
           {dataSources.map(source => (
             <div key={source.name} className="flex items-center justify-between">
               <div className="flex items-center gap-4">
                 <PlatformIcon platform={source.platform} className="size-6" />
-                <span className="font-medium">{source.name}</span>
+                <div>
+                  <span className="font-medium">{source.name}</span>
+                  {source.projectId && (
+                    <p className="text-xs text-muted-foreground">Project ID: {source.projectId}</p>
+                  )}
+                </div>
               </div>
               {source.connected ? (
                 <Button variant="outline" disabled>Connected</Button>
