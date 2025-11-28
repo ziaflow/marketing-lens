@@ -1,0 +1,86 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CampaignTable from '../components/CampaignTable.jsx';
+import PerformanceChart from '../components/PerformanceChart.jsx';
+
+// Access the tenant ID injected by middleware
+const { tenantId } = Astro.locals;
+---
+
+<Layout title="Dashboard | Marketing Lens">
+	<div class="space-y-6">
+		<div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
+			<div class="md:grid md:grid-cols-3 md:gap-6">
+				<div class="md:col-span-1">
+					<h3 class="text-lg font-medium leading-6 text-gray-900">Performance Overview</h3>
+					<p class="mt-1 text-sm text-gray-500">
+						Real-time metrics for tenant: <span class="font-mono text-deep-azure">{tenantId}</span>
+					</p>
+				</div>
+				<div class="mt-5 md:mt-0 md:col-span-2">
+					<div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+						<div class="bg-deep-azure-light overflow-hidden rounded-lg p-5 border border-blue-100">
+							<dt class="truncate text-sm font-medium text-gray-500">Total Spend (Last 7 Days)</dt>
+							<dd class="mt-1 text-3xl font-semibold tracking-tight text-deep-azure">$12,450.00</dd>
+						</div>
+						<div class="bg-green-50 overflow-hidden rounded-lg p-5 border border-green-100">
+							<dt class="truncate text-sm font-medium text-gray-500">Total Conversions</dt>
+							<dd class="mt-1 text-3xl font-semibold tracking-tight text-green-700">842</dd>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+        {/* Chart Section */}
+        <div class="mt-8">
+            <PerformanceChart client:load />
+        </div>
+
+        {/* Campaign Table Section */}
+        <div class="mt-8">
+            <div class="sm:flex sm:items-center">
+                <div class="sm:flex-auto">
+                    <h3 class="text-lg font-medium leading-6 text-gray-900">Active Campaigns</h3>
+                    <p class="mt-2 text-sm text-gray-700">Detailed breakdown of performance by campaign across all platforms.</p>
+                </div>
+            </div>
+            <CampaignTable client:load />
+        </div>
+
+		<div class="bg-white shadow sm:rounded-lg mt-8">
+			<div class="px-4 py-5 sm:p-6">
+				<h3 class="text-lg font-medium leading-6 text-gray-900">Intelligent Insights</h3>
+				<div class="mt-2 max-w-xl text-sm text-gray-500">
+					<p>AI-driven anomaly detection and recommendations.</p>
+				</div>
+				<div class="mt-5 border-t border-gray-200">
+					<dl class="divide-y divide-gray-200">
+						<div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
+							<dt class="text-sm font-medium text-gray-500 flex items-center">
+                                <svg class="h-5 w-5 text-red-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                </svg>
+                                CPA Spike Detected
+                            </dt>
+							<dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                Cost Per Acquisition for 'Summer Sale 2024' (Meta) increased by <span class="font-bold text-red-600">24%</span> yesterday compared to the 7-day average.
+                            </dd>
+						</div>
+                        <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
+							<dt class="text-sm font-medium text-gray-500 flex items-center">
+                                <svg class="h-5 w-5 text-yellow-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
+                                Opportunity
+                            </dt>
+							<dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                'Brand Awareness' (TikTok) has a ROAS of 1.8. Increasing budget by 15% is projected to yield 40 additional conversions.
+                            </dd>
+						</div>
+					</dl>
+				</div>
+			</div>
+		</div>
+	</div>
+</Layout>
