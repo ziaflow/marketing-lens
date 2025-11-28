@@ -1,5 +1,5 @@
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-import { Search } from 'lucide-react';
+import { Search, Gauge } from 'lucide-react';
 
 export default function SeoPage() {
   return (
@@ -15,14 +15,27 @@ export default function SeoPage() {
           </p>
         </div>
       </div>
-      <Card className="flex items-center justify-center min-h-[400px]">
-        <CardHeader className="text-center">
-          <CardTitle>SEO Data Coming Soon</CardTitle>
-          <CardContent className="text-muted-foreground">
-            This section will contain detailed analytics for SEO performance.
+      <div className="grid md:grid-cols-2 gap-8">
+        <Card className="flex items-center justify-center min-h-[300px]">
+          <CardHeader className="text-center">
+            <CardTitle>Search Console Data Coming Soon</CardTitle>
+            <CardContent className="text-muted-foreground pt-2">
+              This section will show keyword and query performance.
+            </CardContent>
+          </CardHeader>
+        </Card>
+        <Card className="flex flex-col justify-center min-h-[300px]">
+           <CardHeader>
+            <div className="flex items-center gap-2">
+                <Gauge className="size-6 text-primary" />
+                <CardTitle>PageSpeed Insights</CardTitle>
+            </div>
+          </CardHeader>
+          <CardContent className="text-center text-muted-foreground">
+            PageSpeed data will be displayed here soon.
           </CardContent>
-        </CardHeader>
-      </Card>
+        </Card>
+      </div>
     </div>
   );
 }
