@@ -11,6 +11,7 @@ const dataSources: { name: string; platform: Platform, connected?: boolean, proj
     { name: 'Google Analytics', platform: 'google' },
     { name: 'Google Business Profile', platform: 'google' },
     { name: 'Google Search Console', platform: 'google' },
+    { name: 'Google PageSpeed Insights', platform: 'google' },
     { name: 'Facebook Ads', platform: 'facebook' },
     { name: 'LinkedIn Campaign Manager', platform: 'linkedin' },
     { name: 'TikTok for Business', platform: 'tiktok' },
