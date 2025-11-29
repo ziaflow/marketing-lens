@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@theme {
+  --color-deep-azure: #4285F4;
+  --color-deep-azure-hover: #3367D6;
+  --color-deep-azure-light: #E8F0FE;
+
+  --font-sans: 'Space Grotesk', sans-serif;
+}
