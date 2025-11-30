@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /.git/
+Disallow: /.env
+Disallow: /config
+Disallow: /admin
+Disallow: /wp-admin
+Disallow: /phpinfo
+Disallow: /aws
