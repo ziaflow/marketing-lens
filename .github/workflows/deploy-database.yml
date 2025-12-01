@@ -1,0 +1,30 @@
+name: Deploy Database (Schema Migration)
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'database/**'
+
+jobs:
+  deploy-database:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install PostgreSQL Client
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client
+
+      - name: Apply Schema
+        env:
+          PGHOST: ${{ secrets.POSTGRES_HOST }}
+          PGUSER: ${{ secrets.POSTGRES_USER }}
+          PGPASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          PGDATABASE: ${{ secrets.POSTGRES_DB }}
+          PGPORT: 5432
+        run: |
+          psql -f database/schema.sql

@@ -1,0 +1,10 @@
+azure-functions
+azure-keyvault-secrets
+azure-identity
+requests
+pandas
+openai
+google-analytics-data
+google-analytics-admin
+psycopg2-binary
+sqlalchemy
